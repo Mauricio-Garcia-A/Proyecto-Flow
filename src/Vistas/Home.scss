@@ -1,0 +1,33 @@
+// Importacion Estilos Globales
+@import '../EstilosGlobales/EstilosGlobales.scss';
+
+
+// Estilos propios de Home
+.contenedor-home{
+
+}
+
+.contenedor-seccion-seleccionarCiudad-Home {
+    background: rgb(255, 218, 218);
+    padding: 10px;
+}
+.contenedor-seccion-ciudadSeleccionada-Home {
+    background: rgb(225, 225, 255);
+    padding: 10px;
+}
+.contenedor-seccion-pronosticoExtendido-Home {
+    background: rgb(255, 255, 231);
+    padding: 10px;
+
+    .contenedor-dias-posteriores-Home {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .contenedor-dia-Home {
+        padding: 10px;
+        margin: 5px;
+        background: red;
+        width: 100px;
+        height: 150px;
+    }
+}
