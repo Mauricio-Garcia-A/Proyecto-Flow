@@ -1,20 +1,29 @@
 import { useEffect, useState } from 'react';
-import { getEstadoClima } from '../Servicios/getEstadoClima';
+import { getEstadoClima, getPronosticoExtendido } from '../Servicios/getEstadoClima';
 
-export default function useEstadoClimaCiudad({}) {
-    const [loading, setLoadig] = useState(false)
+export default function useEstadoClimaCiudad(props) {
+    const [loadingEC, setLoadigEC] = useState(false)
+    const [loadingPE, setLoadigPE] = useState(false)
     const [cityDate, setCityDate] = useState({})
     const [weatherDate, setWatherDate] =useState({})
+    const [listDaysExtendedForecast, setListDaysExtendedForecast ]= useState([])
 
     useEffect(function() {
-        setLoadig(true)
-        getEstadoClima({}).then(respuesta => {                                                                                  // Cada vez que se busca un nuevo producto, trae la primer pagina 
-            setCityDate(respuesta.cityDate)
-            setWatherDate(respuesta.forecastWeather)
-            setLoadig(false)  
+        setLoadigEC(true)
+        getEstadoClima({}).then(respuestaEC => {                                                                                  // Cada vez que se busca un nuevo producto, trae la primer pagina 
+            setCityDate(respuestaEC.cityDate)
+            setWatherDate(respuestaEC.forecastWeather)
+            setLoadigEC(false)  
         })
     
     },[])
+    useEffect(function(){
+        setLoadigPE(true)
+        getPronosticoExtendido({}).then(respuestaPE =>{
+            setListDaysExtendedForecast(respuestaPE.listDays)
+            setLoadigPE(false)
+        })
+    },[])
 
-    return {loading, cityDate, weatherDate};
+    return {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast};
 }
