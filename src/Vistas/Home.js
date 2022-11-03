@@ -1,18 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useEstadoClimaCiudad from '../Hooks/useEstadoClimaCiudad';
+import useListaCiudades from '../Hooks/useListaCiudades';
 
 import './Home.scss'
 
 export default function Home(props) {
-    const ciudades=['Ciudad-01','Ciudad-02','Ciudad-03','Ciudad-04','Ciudad-05']
 
-    const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({})
+    const CIUDAD_ACTUAL = [{
+        "id": "AU00000",
+        "name": "CIUDAD GEOLOCALIZADA",
+        "state": "",
+        "country": "NN",
+        "coord": {
+            "lon": -57.557541,
+            "lat": -38.002281
+        }
+    }]
+    const [ciudadSeleccionada, setCiudadSeleccionada]=useState(CIUDAD_ACTUAL[0])
+    
+    const {LISTA_CIUDADES} = useListaCiudades()
+
+    const LISTA_SELECTOR_CIUDADES = [
+        {   tipo:'Ubicacion actual', 
+            opciones: CIUDAD_ACTUAL 
+        },
+        {   tipo:'Otras ciudades', 
+            opciones: LISTA_CIUDADES
+        }
+    ]
+    
+    function handleChangeCity(id){
+        let city
+        if (id==="AU00000"){
+            city = CIUDAD_ACTUAL
+        } else {
+            city = LISTA_CIUDADES.filter((city,i) => city.id == id)
+        }
+        setCiudadSeleccionada(city[0])
+    }
+
+    const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({lat:ciudadSeleccionada.coord.lat, lng:ciudadSeleccionada.coord.lon })
+
     return (
         <div >
-             <section className='contenedor-seccion-seleccionarCiudad-Home'>
-                        <select name="cars" id="cars">
-                            {ciudades.map((ciudad,index)=>{
-                                return <option  key={index} value={ciudad}>{ciudad}</option>
+             <section  className='contenedor-seccion-seleccionarCiudad-Home'>
+                        <select name="cars" id="cars"  onChange={(e)=>{handleChangeCity(e.target.value)}}>
+                            {LISTA_SELECTOR_CIUDADES.map((grupo,i)=>{
+                                return(
+                                    <optgroup label={grupo.tipo} key={`select-${grupo.tipo}-${i}`}>
+                                        {grupo.opciones.map((opcion,e)=>{
+                                            return(
+                                                <option value={opcion.id} key={`option-${e}`} >{opcion.name}</option>
+                                            )
+                                        })}
+                                    </optgroup> 
+                                )
                             })}
                         </select>
             </section>
