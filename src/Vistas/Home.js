@@ -1,4 +1,7 @@
 import React, {  useState } from 'react';
+import InformacionClimCiudad from '../Componentes/InformacionClimCiudad/InformacionClimCiudad';
+import PronosticoExtendido from '../Componentes/PronosticoExtendido/PronosticoExtendido';
+import SelectorCiudades from '../Componentes/SelectorCiudades/SelectorCiudades';
 import useEstadoClimaCiudad from '../Hooks/useEstadoClimaCiudad';
 import useGeolocalizacion from '../Hooks/useGeolocalizacion';
 import useListaCiudadesSelector from '../Hooks/useListaCiudadesSelector';
@@ -85,46 +88,21 @@ export default function Home(props) {
     const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({lat:ciudadSeleccionada.coord.lat, lng:ciudadSeleccionada.coord.lon })     // Llamada al servicio con los parametros seleccionados en el SELECT
 
     return (
-        <div >
+        <div className='contenedor-Home'>
         { loadingGEO                                                                                                         // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
             ?   <h1>BIENVENIDO</h1>
             :   <>
-             <section  className='contenedor-seccion-seleccionarCiudad-Home'>
-                        <select name="cars" id="cars"  onChange={(e)=>{handleChangeCity(e.target.value)}}>
-                            {listaCiudadesSelector.map((grupo,i)=>{
-                                return(
-                                    <optgroup label={grupo.tipo} key={`select-${grupo.tipo}-${i}`}>
-                                        {grupo.opciones.map((opcion,e)=>{
-                                            return(
-                                                <option value={opcion.id} key={`option-${e}`} >{opcion.name}</option>
-                                            )
-                                        })}
-                                    </optgroup> 
-                                )
-                            })}
-                        </select>
-            </section>
-            { loadingEC                                                                                                          // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
-            ?   <h1>CARGANDO...</h1>
-            :   <>
+                <section  className='contenedor-seccion-seleccionarCiudad-Home'>
+                    <SelectorCiudades 
+                        listaSelector={listaCiudadesSelector} 
+                        handleChange={(e)=>handleChangeCity(e.target.value)}
+                    />
+                </section>
+                { loadingEC                                                                                                          // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
+                ?   <h1>CARGANDO...</h1>
+                :   <>
                     <section className='contenedor-seccion-ciudadSeleccionada-Home'>
-                        <h1>{cityDate.name}</h1>
-                        <h2>{weatherDate.description}</h2>
-                        <h3>Pronostico Actual</h3>
-                        <ul>
-                            <li>Temperatura Actual: {weatherDate.temperature}°C</li>
-                            <li>Sensacion Termica: {weatherDate.thermalSensation}°C</li>
-                            <li>Temp Min: {weatherDate.temperatureMin}°C</li>
-                            <li>Temp Max: {weatherDate.temperatureMax}°C</li>
-                            <li>Presion Atmosferica: {weatherDate.atmosphericPressure} hPa</li>
-                            <li>Velocidad del viento: {weatherDate.windSpeed} mtr/s</li>
-                            <li>Dirección del viento: {weatherDate.windSpeed} grados meteorológicos</li>
-                            <li>Ráfaga de viento: {weatherDate.windGust} mtr/s</li>
-                            <li>Nubosidad: {weatherDate.clouds}%</li>
-                            <li>Humedad: {weatherDate.humidity}%</li>
-                            <li>Visibilidad: {weatherDate.visibility} mts</li>
-                        </ul>
-                        <p>Hora de cálculo de datosHora de cálculo de datos:  {weatherDate.date} hs</p>
+                        <InformacionClimCiudad datosCiudad={cityDate} datosClima={weatherDate}/>
                     </section>        
                 </>
             }
@@ -132,17 +110,7 @@ export default function Home(props) {
                 ?   <h1>CARGANDO...</h1>
                 :   <>
                     <section className='contenedor-seccion-pronosticoExtendido-Home'>
-                        Pronostico extendido
-                        <div className='contenedor-dias-posteriores-Home'>
-                            {listDaysExtendedForecast.map((dia,index)=>{
-                                return <div key={index} className='contenedor-dia-Home'>
-                                            <p>{dia.day}</p>
-                                            <p>{dia.descriptions[0]}</p>
-                                            <p>Min: {dia.temperatureMin}°C</p>
-                                            <p>Max: {dia.temperatureMax}°C</p>
-                                        </div>    
-                            })}                    
-                        </div>
+                        <PronosticoExtendido listaDiasPronosticoExtendido={listDaysExtendedForecast} />
                     </section>                 
                     </>
             }
