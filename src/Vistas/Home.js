@@ -1,51 +1,97 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import useEstadoClimaCiudad from '../Hooks/useEstadoClimaCiudad';
-import useListaCiudades from '../Hooks/useListaCiudades';
+import useGeolocalizacion from '../Hooks/useGeolocalizacion';
+import useListaCiudadesSelector from '../Hooks/useListaCiudadesSelector';
 
 import './Home.scss'
 
 export default function Home(props) {
 
-    const CIUDAD_ACTUAL = [{
+    const {coordenadasActuales, loadingGEO}= useGeolocalizacion()       // Se obtinen las cordenadas de la ubicacion actual
+    /*
+    const [ciudadActualGEO, setCiudadActualGEO]=useState(               // Ciudad con los datos de la Ciudad Actual
+        [{                                        
+            "id": "AU00000",
+            "name": "Ubicacion Actual",
+            "state": "",
+            "country": "NN",
+            "coord": {
+                "lon": coordenadasActuales.lon,
+                "lat": coordenadasActuales.lat
+            }
+        }]
+    )
+    useEffect(()=>{
+        setCiudadActualGEO([{
+            "id": "AU00000",
+            "name": "CIUDAD GEOLOCALIZADA",
+            "state": "",
+            "country": "NN",
+            "coord": {
+                "lon": coordenadasActuales.lon,
+                "lat": coordenadasActuales.lat
+            }
+        }])
+    },[coordenadasActuales.lat,coordenadasActuales.lon])
+    */
+
+    var ciudadActualGEO = [{                                          // Ciudad con los datos de la Ciudad Actual
         "id": "AU00000",
-        "name": "CIUDAD GEOLOCALIZADA",
+        "name": "Ubicacion Actual",//MAR DEL PLATA
         "state": "",
         "country": "NN",
         "coord": {
-            "lon": -57.557541,
-            "lat": -38.002281
+            "lon": coordenadasActuales.lon,
+            "lat": coordenadasActuales.lat
         }
     }]
-    const [ciudadSeleccionada, setCiudadSeleccionada]=useState(CIUDAD_ACTUAL[0])
     
-    const {LISTA_CIUDADES} = useListaCiudades()
+    console.log(ciudadActualGEO[0].coord)
+    
 
-    const LISTA_SELECTOR_CIUDADES = [
-        {   tipo:'Ubicacion actual', 
-            opciones: CIUDAD_ACTUAL 
+    const {listaUbicacionCiudades}=useListaCiudadesSelector({           // Lista con los datos de la Ubicacion, de las ciudades que se manden por parametros
+        ciudades:[
+            'San Carlos de Bariloche', 
+            'Villa Carlos Paz', 
+            'Cafayate', 
+            'Ushuaia', 
+            'Puerto Iguazú',
+            ],
+        corrdenadasGEO:coordenadasActuales
+    })
+
+    const listaCiudadesSelector = [                                     // Se arma el Array para el SELECT, con el formato [GEOLOCALIZACION(Ubicacion Actial),OTRAS CIUDADES(ciudades)]
+        {   tipo:'GEOLOCALIZACION', 
+            opciones: ciudadActualGEO 
         },
-        {   tipo:'Otras ciudades', 
-            opciones: LISTA_CIUDADES
+        {   tipo:'OTRAS CIUDADES', 
+            opciones: listaUbicacionCiudades
         }
     ]
+
     
-    function handleChangeCity(id){
+    const [ciudadSeleccionada, setCiudadSeleccionada]=useState(ciudadActualGEO[0])       // Cuidad Seleccionada en el SELECT
+
+    function handleChangeCity(id){                                                      // Metodo de seleccion del SELECT
         let city
         if (id==="AU00000"){
-            city = CIUDAD_ACTUAL
+            city = listaCiudadesSelector[0].opciones
         } else {
-            city = LISTA_CIUDADES.filter((city,i) => city.id == id)
+            city = listaUbicacionCiudades.filter((city,i) => city.id === Number(id))
         }
         setCiudadSeleccionada(city[0])
     }
 
-    const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({lat:ciudadSeleccionada.coord.lat, lng:ciudadSeleccionada.coord.lon })
+    const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({lat:ciudadSeleccionada.coord.lat, lng:ciudadSeleccionada.coord.lon })     // Llamada al servicio con los parametros seleccionados en el SELECT
 
     return (
         <div >
+        { loadingGEO                                                                                                         // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
+            ?   <h1>BIENVENIDO</h1>
+            :   <>
              <section  className='contenedor-seccion-seleccionarCiudad-Home'>
                         <select name="cars" id="cars"  onChange={(e)=>{handleChangeCity(e.target.value)}}>
-                            {LISTA_SELECTOR_CIUDADES.map((grupo,i)=>{
+                            {listaCiudadesSelector.map((grupo,i)=>{
                                 return(
                                     <optgroup label={grupo.tipo} key={`select-${grupo.tipo}-${i}`}>
                                         {grupo.opciones.map((opcion,e)=>{
@@ -99,7 +145,9 @@ export default function Home(props) {
                         </div>
                     </section>                 
                     </>
-            }   
+            }
+            </>
+        }  
         </div>
     );
 }
