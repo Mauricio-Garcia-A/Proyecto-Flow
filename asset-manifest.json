@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/Proyecto-Flow/static/css/main.e55805d7.css",
-    "main.js": "/Proyecto-Flow/static/js/main.e4bdc9b9.js",
+    "main.css": "/Proyecto-Flow/static/css/main.8f1bc9cd.css",
+    "main.js": "/Proyecto-Flow/static/js/main.2e5ec20a.js",
     "static/js/787.17c7aeeb.chunk.js": "/Proyecto-Flow/static/js/787.17c7aeeb.chunk.js",
+    "static/media/FondoAPP.jpg": "/Proyecto-Flow/static/media/FondoAPP.e4cae00142d089a16ca7.jpg",
     "static/media/FondoHome.jpg": "/Proyecto-Flow/static/media/FondoHome.a4571af574541ae4c3ea.jpg",
     "index.html": "/Proyecto-Flow/index.html",
-    "main.e55805d7.css.map": "/Proyecto-Flow/static/css/main.e55805d7.css.map",
-    "main.e4bdc9b9.js.map": "/Proyecto-Flow/static/js/main.e4bdc9b9.js.map",
+    "main.8f1bc9cd.css.map": "/Proyecto-Flow/static/css/main.8f1bc9cd.css.map",
+    "main.2e5ec20a.js.map": "/Proyecto-Flow/static/js/main.2e5ec20a.js.map",
     "787.17c7aeeb.chunk.js.map": "/Proyecto-Flow/static/js/787.17c7aeeb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e55805d7.css",
-    "static/js/main.e4bdc9b9.js"
+    "static/css/main.8f1bc9cd.css",
+    "static/js/main.2e5ec20a.js"
   ]
 }
