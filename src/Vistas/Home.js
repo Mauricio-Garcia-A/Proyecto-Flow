@@ -88,7 +88,7 @@ export default function Home(props) {
     const {loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast}=useEstadoClimaCiudad({lat:ciudadSeleccionada.coord.lat, lng:ciudadSeleccionada.coord.lon })     // Llamada al servicio con los parametros seleccionados en el SELECT
 
     return (
-        <div className='contenedor-Home'>
+        <div className='contenedor-Home seccion-estandar'>
         { loadingGEO                                                                                                         // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
             ?   <h1>BIENVENIDO</h1>
             :   <>

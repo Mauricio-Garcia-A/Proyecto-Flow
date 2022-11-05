@@ -1,9 +1,9 @@
-import './App.css';
+import './App.scss';
 import Home from './Vistas/Home';
 
 function App() {
   return (
-    <div className="contenedor-pricipal-App seccion-estandar">
+    <div className="contenedor-pricipal-App ">
       <Home />  
     </div>
   );
