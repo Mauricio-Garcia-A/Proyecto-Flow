@@ -1,0 +1,16 @@
+// Importacion Estilos Globales
+@import '../../EstilosGlobales/EstilosGlobales.scss';
+
+
+// Estilos propios de Home
+.selector-SelectorCiudades {
+    font-size: 16px;
+    width: 300px;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #4139397c;
+    padding: 8px 20px;
+    color: rgba(255, 255, 255, 0.647);
+}

@@ -49,7 +49,7 @@ export default function Home(props) {
         }
     }]
     
-    console.log(ciudadActualGEO[0].coord)
+  
     
 
     const {listaUbicacionCiudades}=useListaCiudadesSelector({           // Lista con los datos de la Ubicacion, de las ciudades que se manden por parametros

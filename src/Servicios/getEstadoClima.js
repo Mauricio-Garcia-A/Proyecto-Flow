@@ -13,11 +13,12 @@ export function getEstadoClima({lat=LAT_Default, lng=LNG__Default }) {
             country:sys.country
         }
         const forecastWeather = {
-            description: weather[0].description,        // Descripcion clima
-            temperature: main.temp,                     // (°C) Temperatura Actual  
-            temperatureMin:main.temp_min,               // (°C) Temperatura Min de la utima hora 
-            temperatureMax:main.temp_max,               // (°C) Temperatura Actual Max de la utima hora 
-            thermalSensation:main.feels_like,           // (°C) Sensacion termica 
+            description: weather[0].description.toUpperCase(),  // Descripcion clima (en MAYUSCULA)
+            icon: weather[0].icon,                              // Codigo del icono
+            temperature: main.temp.toFixed(1),                  // (°C) Temperatura Actual  
+            temperatureMin:main.temp_min.toFixed(1),            // (°C) Temperatura Min de la utima hora 
+            temperatureMax:main.temp_max.toFixed(1),            // (°C) Temperatura Actual Max de la utima hora 
+            thermalSensation:main.feels_like.toFixed(1),        // (°C) Sensacion termica 
 
             atmosphericPressure:main.pressure,          // (hPa) Precion atmosferica
             humidity:main.humidity,                     // (%) Humedad
@@ -26,11 +27,13 @@ export function getEstadoClima({lat=LAT_Default, lng=LNG__Default }) {
 
             clouds:clouds.all,                          // (%) Nubosidad
             
-            windSpeed: wind.speed,                     // (metro/seg) Velocidad del viento
-            windDirection:wind.deg,                    // (grados meteorológicos) Dirección del viento, 
-            windGust:wind.gust,                        // (metro/seg) Ráfaga de viento.
-            
-            date:new Date(dt*1000).toLocaleTimeString('es-AR', { hour12: false })  // Hora de actualizacion del registro climatico
+            windSpeed: (wind.speed*(1000/3600)).toFixed(1),         // (km/h) Velocidad del viento
+            windDirectionDeg:wind.deg,                    // (grados meteorológicos) Dirección del viento, 
+            windGust:(wind.gust*(1000/3600)).toFixed(1),            // (km/h) Ráfaga de viento.
+            dateTime:dt,
+            dateWeekday:new Date(dt*1000).toLocaleDateString('es-AR', { weekday:"short"}).toUpperCase(),  // Nombre del dia de la semana abreviado (LUN,MAR, MIE....)
+            dateHourMinute:new Date(dt*1000).toLocaleTimeString("en-AR", {hour12: true, hour: "2-digit",minute: "2-digit"}).split(' ')[0],  // Hora de actualizacion del registro climatico formato ('12:23'), AM])
+            dateDayMoment:new Date(dt*1000).toLocaleTimeString("en-AR", {hour12: true, hour: "2-digit",minute: "2-digit"}).split(' ')[1] // Momento del dia (PM, AM)
         }
         
         return {cityDate, forecastWeather}             
@@ -48,6 +51,8 @@ export function getPronosticoExtendido({lat=LAT_Default, lng=LNG__Default}) {
         const {list}=data
         const result = list.map((item) =>{ 
             let day =new Date(item.dt*1000).toLocaleDateString('es-AR') //Fecha
+            //console.log(new Date(dt*1000).toLocaleDateString('es-AR', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) )
+
             let description=item.weather[0].description         // Descripcion clima
             let temperature=item.main.temp                      // (°C) Temperatura Actual  
             /*

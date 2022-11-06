@@ -34,14 +34,19 @@
 
 .contenedor-seccion-seleccionarCiudad-Home {
     padding: 10px;
+    text-align: center;
 }
 .contenedor-seccion-ciudadSeleccionada-Home {
-    background: rgba(225, 225, 255, 0.445);
     padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
 .contenedor-seccion-pronosticoExtendido-Home {
     padding: 10px;
-
+    text-align: center;
     .contenedor-dias-posteriores-Home {
         display: flex;
         flex-flow: row wrap;
@@ -49,7 +54,7 @@
     .contenedor-dia-Home {
         padding: 10px;
         margin: 5px;
-        background: red;
+        background: rgba(208, 204, 204, 0.395);
         width: 100px;
         height: 150px;
     }

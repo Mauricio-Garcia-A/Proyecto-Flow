@@ -4,7 +4,7 @@ import './SelectorCiudades.scss'
 
 export default function SelectorCiudades({listaSelector, handleChange}) {
     return (
-        <select name="cars" id="cars" onChange={handleChange}>
+        <select name="cars" id="cars" onChange={handleChange} className='selector-SelectorCiudades'>
             {listaSelector.map((grupo, i) => {
                 return (
                     <optgroup label={grupo.tipo} key={`select-${grupo.tipo}-${i}`}>
