@@ -7,6 +7,7 @@ import SelectorCiudades from '../Componentes/SelectorCiudades/SelectorCiudades';
 import useEstadoClimaCiudad from '../Hooks/useEstadoClimaCiudad';
 import useGeolocalizacion from '../Hooks/useGeolocalizacion';
 import useListaCiudadesSelector from '../Hooks/useListaCiudadesSelector';
+import useSEO from '../Hooks/useSEO';
 
 import './Home.scss'
 
@@ -90,6 +91,10 @@ export default function Home(props) {
     }
 
     const { loadingEC, loadingPE, cityDate, weatherDate, listDaysExtendedForecast } = useEstadoClimaCiudad({ lat: ciudadSeleccionada.coord.lat, lng: ciudadSeleccionada.coord.lon })     // Llamada al servicio con los parametros seleccionados en el SELECT
+
+    const tituloSeoM = loadingEC ? 'Cargando...' : `Clima en ${ciudadSeleccionada.name} `
+    const descripcionSeoM = `App Pronostico de Clima - challlenge para Telecom-Flow`
+    useSEO({title: tituloSeoM, description: descripcionSeoM})
 
     return (
     <div className="contenedor-pricipal-Home ">   
