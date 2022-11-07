@@ -1,0 +1,208 @@
+// Importacion Estilos Globales
+@import '../../EstilosGlobales/EstilosGlobales.scss';
+
+
+// Estilos propios de Home
+.contenedor-InformacionClimaCiudad {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    h1 {
+        font-size: 30pt;
+        padding: 5px;
+    }
+    @media (max-width:500px) {
+        transform: scale(0.8);
+        
+    }
+
+    @media (max-width:405px) {
+        transform: scale(0.7);
+    }
+    transition: 1s ease all;
+    &.placeholder {
+        color: rgb(67, 67, 67);
+        opacity: 1;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    @keyframes example {
+        to {color: rgb(70, 69, 69);
+            opacity: 0.7;
+        }
+    }
+  
+    .contenedor-datos-clima-InformacionClimCiudad {
+        width: 430px;
+        height: 430px;
+        border-radius: 50%;
+        background: $colorNegroFondo1;
+        backdrop-filter: blur(3px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+
+
+        article {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background:rgba(0, 0, 0, 0.623);
+            border: 1px solid rgba(255, 255, 255, 0.192);
+            //margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows:  auto auto auto;
+            justify-content: center;
+            align-items: center;
+    
+            .item-InformacionClimCiudad {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+    
+                h1 {
+                    font-size: 40pt;
+                }
+                b{
+                    padding-top: 10px;
+                    font-size: 15pt;
+                }
+                p{
+                    font-size: 10pt;
+                    padding: 5px 0px 0px 0px;
+                }
+                p b {
+                    font-size: 12pt;
+                }
+    
+                
+                .contenedor-temperatura-actual{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    padding:8px;
+                }
+            }
+            
+            .item1-IC {
+                grid-column: 1/4;
+                grid-row: inherit;
+                display: flex ;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                
+                h1 {
+                    font-size: 40pt;
+                }
+                b{
+                    font-size: 15pt;
+                }
+                p{
+                    font-size: 10pt;
+                }
+                p b {
+                    font-size: 12pt;
+                }
+                .contenedor-temperatura-actual{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    padding:8px 0px 3px 0px;
+                }
+            }
+            .item2-IC {
+                grid-column: 1/2;
+                grid-row: 2/3;
+                p{
+                    font-size: 10pt;
+                }
+                p b {
+                    font-size: 12pt;
+                }   
+            }
+            .item3-IC {
+                grid-column: 2/3;
+                grid-row: 2/3;
+                width: 170px;
+                height: 130px;
+                
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size:contain;
+            }
+            .item4-IC {
+                grid-column: 3/4;
+                grid-row: 2/3;
+            }
+            .item5-IC {
+                grid-column: 1/4;
+                grid-row: 3;
+                p {
+                    padding-bottom: 5px;
+                    font-size: 8pt;
+                    b {
+                        font-size: 8pt;
+                    }
+                }
+                .contenedor-hora-actualizacion {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    h3 {
+                        padding: 0px 5px 0px 0px;
+                        font-size: 26pt;
+                    }
+                    div {
+                        display: flex;
+                        flex-flow: column nowrap;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        padding: 0;
+                        b { 
+                            margin-top: 4px;
+                            padding: 0px 0px 0px 0px;
+                            font-size: 12pt;
+                            
+                        }
+                        p {
+                            padding: 0;
+                            font-size: 8pt;
+                            color: rgba(255, 0, 0, 0.488);
+                        }
+                    }
+                }
+            }
+    
+        }
+    
+        .separador {
+            
+            width: 200px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.195);
+            box-shadow: 0px 0px 22px 1px rgba(255, 255, 255, 0.699);
+        }
+        .separador2 {
+            margin: 3px;
+            width: 80px;
+            height: 2px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.201);
+            box-shadow: 0px 0px 22px 1px rgba(255, 255, 255, 0.7);
+        }
+    }
+
+
+}
+
+
+

@@ -18,8 +18,10 @@ export default function ItemPronosticoExtendido({index, nombreMes, nombreDia, nu
             <div className='icono-clima-ItemPronosticoExtendido'
                 style={{ backgroundImage: `url(${require(`../../Imagenes/IconosClima/${icono}.png`)})` }}
             />
+            <div className='descripcion-clima-ItemPronosticoExtendido'>
+                <h2>{descripcion}</h2>
+            </div>
             
-            <h2>{descripcion}</h2>
         </div>
     )
 }

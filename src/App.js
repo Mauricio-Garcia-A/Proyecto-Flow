@@ -3,7 +3,7 @@ import Home from './Vistas/Home';
 
 function App() {
   return (
-    <div className="contenedor-pricipal-App ">
+    <div >
       <Home />  
     </div>
   );

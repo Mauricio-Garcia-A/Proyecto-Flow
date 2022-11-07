@@ -1,4 +1,8 @@
+// ESTILOS GLOBALES
+
 .seccion-estandar {
-    max-width: 1280px;
-    max-height: 768px;
+    max-width: 1200px; // Maxima resolucion solicitada width (1280px)
+    min-height: 780px; // Maxima resolucion solicitada height (780px)
 }
+
+$colorNegroFondo1: rgba(0, 0, 0, 0.349);       // Color fondo Estandar 1

@@ -85,10 +85,10 @@ export function getPronosticoExtendido({lat=LAT_Default, lng=LNG__Default}) {
                     temperatures: [], 
                     descriptions:[],
                     icons:[],
-                    temperatureMin:current.temperature, 
-                    temperatureMax:current.temperature,
-                    selectedDescription:'aaa',
-                    selectedIcon:'aaa'
+                    temperatureMin:current.temperature.toFixed(0), 
+                    temperatureMax:current.temperature.toFixed(0),
+                    selectedDescription:'',
+                    selectedIcon:'na'
                 };
                 prev.push(exists);
             }

@@ -2,15 +2,32 @@
 @import '../../EstilosGlobales/EstilosGlobales.scss';
 
 
-// Estilos propios de Home
+// Estilos propios de SelectorCiudades
 .selector-SelectorCiudades {
-    font-size: 16px;
+    padding: 0px 10px 0px 25px;
+    margin: 10px;
+    font-size: 14px;
     width: 300px;
     height: 40px;
     border: 0;
     cursor: pointer;
+    border: 1px rgba(255, 255, 255, 0.24) solid;
     border-radius: 20px;
-    background-color: #4139397c;
-    padding: 8px 20px;
+    background-color: $colorNegroFondo1;
+    backdrop-filter: blur(4px);
+
     color: rgba(255, 255, 255, 0.647);
+    transition: 1s ease all;
+
+    &:hover {
+        background: #1312125c;
+    }
+
+    option {
+        background: rgba(29, 26, 26, 0.644);
+    }
+
+    optgroup {
+        background: rgb(29, 26, 26);
+    }
 }

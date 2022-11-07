@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import useDireccionViento from '../../Hooks/useDireccionViento';
 
-import './InformacionClimCiudad.scss'
+import './InformacionClimaCiudad.scss'
 
 
-export default function InformacionClimCiudad({ datosCiudad, datosClima }) {
+export default function InformacionClimaCiudad({ datosCiudad, datosClima }) {
     const [icon, setIcon] = useState('na')
     const [windDeg, setWindDeg] = useState({})
 
-    const {direccionVientoAproximada}=useDireccionViento(datosClima.windDirectionDeg)
+    const { direccionVientoAproximada } = useDireccionViento(datosClima.windDirectionDeg)
 
     useEffect(() => {
         setIcon(datosClima.icon)
@@ -16,11 +16,11 @@ export default function InformacionClimCiudad({ datosCiudad, datosClima }) {
     }, [datosClima.icon])
 
     return (
-        <>
+        <section className='contenedor-InformacionClimaCiudad'>
             <header>
                 <h1>{datosCiudad.name}</h1>
             </header>
-            <div className='contenedor-informacion-clima-InformacionClimCiudad'>
+            <div className='contenedor-datos-clima-InformacionClimCiudad'>
                 <article >
                     <div className='item-InformacionClimCiudad item1-IC'>
                         <div className='contenedor-temperatura-actual'>
@@ -35,7 +35,7 @@ export default function InformacionClimCiudad({ datosCiudad, datosClima }) {
                         <div className='separador2' />
                         <p>Presion Atm: <b>{datosClima.atmosphericPressure} hPa</b></p>
                         <div className='separador2' />
-                        <p>Humedad: <b>{datosClima.humidity}%</b></p>
+                        <p>Humedad:<br /> <b>{datosClima.humidity}%</b></p>
                     </div>
                     <div className='item-InformacionClimCiudad item3-IC'
                         style={{ backgroundImage: `url(${require(`../../Imagenes/IconosClima/${icon}.png`)})` }}
@@ -47,7 +47,7 @@ export default function InformacionClimCiudad({ datosCiudad, datosClima }) {
                         <p>Visibilidad: <b>{datosClima.visibility} mts</b></p>
                         <div className='separador2' />
 
-                        <p>Nubosidad: <b>{datosClima.clouds}%</b></p>
+                        <p>Nubosidad:<br /> <b>{datosClima.clouds}%</b></p>
                     </div>
 
                     <div className='item-InformacionClimCiudad item5-IC'>
@@ -67,7 +67,7 @@ export default function InformacionClimCiudad({ datosCiudad, datosClima }) {
                     </div>
                 </article>
             </div>
-        </>
+        </section>
     )
 }
 

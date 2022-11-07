@@ -1,16 +1,48 @@
+// Importacion Estilos Globales
+@import '../../EstilosGlobales/EstilosGlobales.scss';
 
 
 // -----  Estilos del componente PronosticoExtendido  ----
 .contenedor-PronosticoExtendido {
     background: rgba(90, 88, 88, 0.314);
+    backdrop-filter: blur(2px);
+
     padding: 15px;
+    margin-top: 30px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s ease all;
+
+    @media (max-width:470px) {
+        transform: scale(0.8);
+    }
+    @media (max-width:370px) {
+        transform: scale(0.6);
+    }
     .contenedor-lista-dias-PronosticoExtendido {
         display: flex;
         flex-flow: row nowrap;
+        transition: 1s ease all;
+
         @media (max-width:770px) {
             flex-flow: column nowrap;
-
+        }
+       
+    }
+    &.placeholder {
+        color: rgb(203, 203, 203);
+        opacity: 1;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    @keyframes example {
+        to {color: rgb(89, 89, 89);
+            opacity: 0.7;
         }
     }
 }
@@ -25,25 +57,25 @@
 .contenedor-ItemPronosticoExtendido {
     padding: 10px;
     margin: 5px;
-    background: rgba(156, 156, 156, 0.395);
+    background: rgba(255, 255, 255, 0.178);
     border-radius: 10px;
     width: 100px;
     height: 150px;
     display: flex;
     flex-flow: column ;
     align-items: center;
-
+    text-align: center;
     @media (max-width:770px) {
         flex-flow: row nowrap;
-        width: 80%;
+        width: 93%;
         height: 50px;
     }
-
+  
     h2 {
         font-size: 8pt;
     }
     .contenedor-datos-fecha-IPE {
-        
+        width: 100px;
         b {
             padding: 0;
             margin: 0;
@@ -93,7 +125,15 @@
             height: 40px;
         }
     }
-
+    .descripcion-clima-ItemPronosticoExtendido{
+        width: 100%;
+        height: 20px;
+        padding-top: 3px;
+        @media (max-width:770px) {
+            width: 25%;
+        }
+        
+    }
 }
 
 

@@ -6,7 +6,7 @@ export default function PronosticoExtendido({ listaDiasPronosticoExtendido }) {
 
     return (
         <section className='contenedor-PronosticoExtendido'>
-            Pronostico extendido
+            <h3>Pronostico extendido</h3>
             <div className='contenedor-lista-dias-PronosticoExtendido'>
                 {listaDiasPronosticoExtendido.map((dia, index) => {
                     return <ItemPronosticoExtendido 
@@ -19,10 +19,10 @@ export default function PronosticoExtendido({ listaDiasPronosticoExtendido }) {
                                 descripcion={dia.selectedDescription}
                                 icono={dia.selectedIcon}
                             />
-            
                 })}
             </div>
         </section>
+       
     )
 }
 
