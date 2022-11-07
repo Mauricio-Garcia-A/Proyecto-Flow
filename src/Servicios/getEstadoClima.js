@@ -20,17 +20,17 @@ export function getEstadoClima({lat=LAT_Default, lng=LNG__Default }) {
             temperatureMax:main.temp_max.toFixed(1),            // (°C) Temperatura Actual Max de la utima hora 
             thermalSensation:main.feels_like.toFixed(1),        // (°C) Sensacion termica 
 
-            atmosphericPressure:main.pressure,          // (hPa) Precion atmosferica
-            humidity:main.humidity,                     // (%) Humedad
+            atmosphericPressure:main.pressure,                  // (hPa) Precion atmosferica
+            humidity:main.humidity,                             // (%) Humedad
 
-            visibility:visibility,                      // (metros) Visibilidad
+            visibility:visibility,                              // (metros) Visibilidad
 
-            clouds:clouds.all,                          // (%) Nubosidad
+            clouds:clouds.all,                                  // (%) Nubosidad
             
-            windSpeed: (wind.speed*(1000/3600)).toFixed(1),         // (km/h) Velocidad del viento
-            windDirectionDeg:wind.deg,                    // (grados meteorológicos) Dirección del viento, 
-            windGust:(wind.gust*(1000/3600)).toFixed(1),            // (km/h) Ráfaga de viento.
-            dateTime:dt,
+            windSpeed: (wind.speed*(1000/3600)).toFixed(1),     // (km/h) Velocidad del viento
+            windDirectionDeg:wind.deg,                          // (grados meteorológicos) Dirección del viento, 
+            windGust:(wind.gust*(1000/3600)).toFixed(1),        // (km/h) Ráfaga de viento.
+            dateTime:dt,                            
             dateWeekday:new Date(dt*1000).toLocaleDateString('es-AR', { weekday:"short"}).toUpperCase(),  // Nombre del dia de la semana abreviado (LUN,MAR, MIE....)
             dateHourMinute:new Date(dt*1000).toLocaleTimeString("en-AR", {hour12: true, hour: "2-digit",minute: "2-digit"}).split(' ')[0],  // Hora de actualizacion del registro climatico formato ('12:23'), AM])
             dateDayMoment:new Date(dt*1000).toLocaleTimeString("en-AR", {hour12: true, hour: "2-digit",minute: "2-digit"}).split(' ')[1] // Momento del dia (PM, AM)
@@ -50,11 +50,13 @@ export function getPronosticoExtendido({lat=LAT_Default, lng=LNG__Default}) {
     .then(data => { 
         const {list}=data
         const result = list.map((item) =>{ 
-            let day =new Date(item.dt*1000).toLocaleDateString('es-AR') //Fecha
-            //console.log(new Date(dt*1000).toLocaleDateString('es-AR', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) )
-
-            let description=item.weather[0].description         // Descripcion clima
-            let temperature=item.main.temp                      // (°C) Temperatura Actual  
+            let day =new Date(item.dt*1000).toLocaleDateString('es-AR')                             //Fecha (formato utilizado para filtar)
+            let monthName=new Date(item.dt*1000).toLocaleDateString('es-AR', { month:"long"})
+            let dayName =new Date(item.dt*1000).toLocaleDateString('es-AR', { weekday:"short"})      // Nombre del dia (lunes, marte, ...)
+            let dayNumber=new Date(item.dt*1000).toLocaleDateString('es-AR', { day:"numeric"})      // Numero del dia (1,2, ..., 31)
+            let icon= item.weather[0].icon                                                          // Codigo del icono
+            let description=item.weather[0].description                                             // Descripcion clima
+            let temperature=item.main.temp                                                          // (°C) Temperatura Actual  
             /*
             let temperatureMin=item.main.temp_min               // (°C) Temperatura Min de la utima hora 
             let temperatureMax=item.main.temp_max               // (°C) Temperatura Actual Max de la utima hora 
@@ -67,37 +69,48 @@ export function getPronosticoExtendido({lat=LAT_Default, lng=LNG__Default}) {
             let windDirection=item.wind.deg                     // (grados meteorológicos) Dirección del viento 
             let windGust=item.wind.gust                         // (metro/seg) Ráfaga de viento.
             */
-            return {day,description,temperature}
+            return {day,description,temperature,icon,dayName,dayNumber,monthName}
         })
         
-        const fullListDays = result.reduce((prev, current, index, arr) => {                   // Utilizo el método reduce para ir creando el array resultante
+        const fullListDays = result.reduce((prev, current, index, arr) => {              // Utilizo el método reduce para ir creando el array resultante
             
             let exists = prev.find(x => x.day === current.day);                         // Compruebo si ya existe el elemento
             
             if (!exists) {                                                              // Si no existe lo creo con un array vacío en VALOR
                 exists = {
                     day: current.day,
+                    monthName:current.monthName.toUpperCase(),
+                    dayName: current.dayName.toUpperCase(),
+                    dayNumber:current.dayNumber,
                     temperatures: [], 
-                    descriptions:[], 
+                    descriptions:[],
+                    icons:[],
                     temperatureMin:current.temperature, 
-                    temperatureMax:current.temperature 
+                    temperatureMax:current.temperature,
+                    selectedDescription:'aaa',
+                    selectedIcon:'aaa'
                 };
                 prev.push(exists);
             }
             if (current.temperature != null){                                           // Si el elemento actual tiene temperature lo añado al array del elemento existente y actualizo las temraturas Min y Max
                 exists.temperatures.push(current.temperature);
                 if (current.temperature > exists.temperatureMax) {
-                    exists.temperatureMax=current.temperature
+                    exists.temperatureMax=current.temperature.toFixed(0)
                 }
                 if (current.temperature < exists.temperatureMin) {
-                    exists.temperatureMin=current.temperature
+                    exists.temperatureMin=current.temperature.toFixed(0)
                 }
             }
               
             if ((current.description != null) && (exists.descriptions.indexOf(current.description) < 0)) {          // Si el elemento actual tiene descripcion y no esta repetido lo añado al array del elemento existente
-                exists.descriptions.push(current.description);
+                exists.descriptions.push(current.description.toUpperCase());
             }
-
+            if ((current.icon != null) && (exists.icons.indexOf(current.icon) < 0)) {                               // Si el elemento actual tiene codigo icono y no esta repetido lo añado al array del elemento existente
+                exists.icons.push(current.icon);
+            }
+           
+            exists.selectedDescription=exists.descriptions[0]                           // Al no haber un criterio definido para elejir entre los diferentes chimas del dia, se elije el primero
+            exists.selectedIcon=exists.icons[0].replace("n", "d")                                          // Se elije elprimer icono de la lista para hacer concordancia con la primera descripcion, seleccionada anteriormente
             return prev;                                                                 // Devuelvo el array resultado para la nueva iteración
         }, []);
 

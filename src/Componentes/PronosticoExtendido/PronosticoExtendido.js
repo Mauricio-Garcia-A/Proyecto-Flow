@@ -1,21 +1,28 @@
-import React from 'react'
+
+import ItemPronosticoExtendido from './ItemPronosticoExtendido'
 import './PronosticoExtendido.scss'
 
-export default function PronosticoExtendido({listaDiasPronosticoExtendido}) {
+export default function PronosticoExtendido({ listaDiasPronosticoExtendido }) {
+
     return (
-        <div>
+        <section className='contenedor-PronosticoExtendido'>
             Pronostico extendido
-            <div className='contenedor-dias-posteriores-Home'>
+            <div className='contenedor-lista-dias-PronosticoExtendido'>
                 {listaDiasPronosticoExtendido.map((dia, index) => {
-                    return <div key={index} className='contenedor-dia-Home'>
-                        <p>{dia.day}</p>
-                        <p>{dia.descriptions[0]}</p>
-                        <p>Min: {dia.temperatureMin}°C</p>
-                        <p>Max: {dia.temperatureMax}°C</p>
-                    </div>
+                    return <ItemPronosticoExtendido 
+                                key={index}
+                                nombreMes={dia.monthName}
+                                nombreDia={dia.dayName}
+                                numeroDia={dia.dayNumber}
+                                temperaturaMin={dia.temperatureMin}
+                                temperaturaMax={dia.temperatureMax}
+                                descripcion={dia.selectedDescription}
+                                icono={dia.selectedIcon}
+                            />
+            
                 })}
             </div>
-        </div>
+        </section>
     )
 }
 
