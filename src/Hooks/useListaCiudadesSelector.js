@@ -4,7 +4,7 @@ import { LISTA_CIUDADES } from '../Helpers/ListaCiudades'
 export default function useListaCiudadesSelector({ ciudades = [], corrdenadasGEO }) {
     var ciudadDefault= [{                                          // Ciudad con los datos de la Ciudad Actual
         "id": "AU00000",
-        "name": "Ubicacion Actual",//MAR DEL PLATA
+        "name": "Ubicacion Actual",
         "state": "",
         "country": "NN",
         "coord": {
