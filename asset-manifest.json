@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Proyecto-Flow/static/css/main.f87a1658.css",
-    "main.js": "/Proyecto-Flow/static/js/main.0588a645.js",
+    "main.js": "/Proyecto-Flow/static/js/main.dd3349f1.js",
     "static/js/787.17c7aeeb.chunk.js": "/Proyecto-Flow/static/js/787.17c7aeeb.chunk.js",
     "static/media/FondoAPP.jpg": "/Proyecto-Flow/static/media/FondoAPP.e4cae00142d089a16ca7.jpg",
     "static/media/FondoHome.jpg": "/Proyecto-Flow/static/media/FondoHome.a4571af574541ae4c3ea.jpg",
@@ -26,11 +26,11 @@
     "static/media/01n.png": "/Proyecto-Flow/static/media/01n.392c480d360be87a26c2.png",
     "index.html": "/Proyecto-Flow/index.html",
     "main.f87a1658.css.map": "/Proyecto-Flow/static/css/main.f87a1658.css.map",
-    "main.0588a645.js.map": "/Proyecto-Flow/static/js/main.0588a645.js.map",
+    "main.dd3349f1.js.map": "/Proyecto-Flow/static/js/main.dd3349f1.js.map",
     "787.17c7aeeb.chunk.js.map": "/Proyecto-Flow/static/js/787.17c7aeeb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f87a1658.css",
-    "static/js/main.0588a645.js"
+    "static/js/main.dd3349f1.js"
   ]
 }
