@@ -6,7 +6,7 @@ export async function getLocalizacionUsuario() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(mostrarPosicion, mostrarErrores)  
         } else {
-            alert(`Este navegador no soporta la geolocalización. Continuar con la ciudad por defecto`)
+            alert(`Este navegador no soporta la geolocalización. Continuar con una ciudad por defecto`)
             let coordenadasGeo = CIUDAD_DEFAULT[0].coord
             resolve({coordenadasGeo})
         }  
@@ -21,13 +21,13 @@ export async function getLocalizacionUsuario() {
        function mostrarErrores(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
-                    alert(`Permiso denegado por el usuario. Continuar usando la App con la ciudad por defecto `)
+                    alert(`Permiso denegado por el usuario. Continuar usando la App con una ciudad por defecto `)
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    alert(`Posición no disponible. Continuar usando la App con la ciudad por defecto`)
+                    alert(`Posición no disponible. Continuar usando la App con una ciudad por defecto`)
                     break; 
                 case error.TIMEOUT:
-                    alert(`Tiempo de espera agotado. Continuar usando la App con la ciudad por defecto`)
+                    alert(`Tiempo de espera agotado. Continuar usando la App con una ciudad por defecto`)
                     break;
                 default:
                     alert(`Error de Geolocalización desconocido.`);
