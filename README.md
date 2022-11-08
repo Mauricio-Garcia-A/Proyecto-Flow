@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+## Proyecto APP Clima - Challenge FronEnd Telecom FLOW  
+  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="right">
+  
+</div>  
+  
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Instructivo para levantar el proyecto localmente  
+###### Como el proyecto está realizado en ReactJS es necesario tener instalado las herramientas NodeJS y Git en el ordenador.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+  
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pasos a seguir:  
+- Clonar este repositorio en tu ordenador. Ya se por comando o descargándose el archivo ‘.zip’
+  
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Abrir el proyecto con algún editor de código fuente, como puede ser VisualStudioCode o SublimeText. (entre otros)  
+  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Una vez dentro de la carpeta del proyecto ejecutar en un terminal el código ‘npm install’, para instalar librerías y otras dependencias utilizadas en el proyecto.  
+  
 
-### `npm run eject`
+- Hecho esto, el último paso es ejecutar ‘npm start’ para ejecutar el proyecto localmente.  
+  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Y para correr los test debes ejecutar ‘npm test’ en la consola.  
+  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br/>  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Deciciones tomadas  
+<table>
+<tr>
+<td valign="top" width="80%">
+            - ### <ins>Decisiones tomadas en el Diseño (UI/UX)
+            Para diseñar la interfaz usuario se aplicaron heurísticas y patrones de diseño UI. Buscando una app web minimalista, pero atractiva.
+</ins>    
+</td>
+<td valign="top" width="50%">
+            - ### <ins>Decisiones tomadas en el Desarrollo
+            Para el desarrollo se decidió hacerlo en ReactJs, trabajando con archivos ‘.js’ y para los estilos se utilizo la librería de SASS.
+            En lo que respecta a la estructura de carpetas dentro del proyecto, se busco seguir una estructura basada en Atomic Design mas basada en la funcionalidad de cada componente.</ins> 
+</td>
+</tr>
+</table>  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Lenguajes y herramientas utilizadas 
+<div align="center">  
+<a href="https://reactjs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="50" /></a>  
+<a href="https://www.w3schools.com/css/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" height="50" /></a>  
+<a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" height="50" /></a>  
+<a href="https://www.javascript.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" height="50" /></a>  
+<a href="https://sass-lang.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/sass-original.svg" alt="Sass" height="50" /></a>  
+<a href="https://github.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="50" /></a>  
+</div>  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br/>  
 
-### Analyzing the Bundle Size
+<br/>  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br/>  
 
-### Making a Progressive Web App
+<br/>  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br/>  
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br />
