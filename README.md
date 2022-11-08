@@ -41,21 +41,33 @@
 <br/>  
 
 
-## Deciciones tomadas  
-<table>
-<tr>
-<td valign="top" width="80%">
-            - ### <ins>Decisiones tomadas en el Diseño (UI/UX)
-            Para diseñar la interfaz usuario se aplicaron heurísticas y patrones de diseño UI. Buscando una app web minimalista, pero atractiva.
-</ins>    
-</td>
-<td valign="top" width="50%">
-            - ### <ins>Decisiones tomadas en el Desarrollo
-            Para el desarrollo se decidió hacerlo en ReactJs, trabajando con archivos ‘.js’ y para los estilos se utilizo la librería de SASS.
-            En lo que respecta a la estructura de carpetas dentro del proyecto, se busco seguir una estructura basada en Atomic Design mas basada en la funcionalidad de cada componente.</ins> 
-</td>
-</tr>
-</table>  
+## Rapidfire  
+<table><tr><td valign="top" width="50%">
+
+- ### Decisiones tomadas en el Diseño (UI/UX)
+Para diseñar la interfaz usuario se aplicaron heurísticas y patrones de diseño UI. Buscando una app web minimalista, pero atractiva.
+
+  
+  
+
+- ### Decisiones tomadas en el Desarrollo
+Para el desarrollo se decidió hacerlo en ReactJs, trabajando con archivos ‘.js’ y para los estilos se utilizo la librería de SASS.
+En lo que respecta a la estructura de carpetas dentro del proyecto, se busco seguir una estructura basada en Atomic Design mas basada en la funcionalidad de cada componente.  
+
+
+</td><td valign="top" width="50%">
+
+<div align="center">
+<img src="https://rishavanand.github.io/static/images/greetings.gif" align="center" style="width: 100%" />
+</div>  
+
+
+</td></tr></table>  
+
+<br/>  
+
+
+## Languages and Tools    
 
 <br/>  
 
