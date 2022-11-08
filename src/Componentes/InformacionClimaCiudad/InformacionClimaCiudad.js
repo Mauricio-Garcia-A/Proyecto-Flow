@@ -6,13 +6,13 @@ import './InformacionClimaCiudad.scss'
 
 export default function InformacionClimaCiudad({ datosCiudad, datosClima }) {
     const [icon, setIcon] = useState('na')
-    const [windDeg, setWindDeg] = useState({})
+    const [windDeg, setWindDeg] = useState('')
 
-    const { direccionVientoAproximada } = useDireccionViento(datosClima.windDirectionDeg)
+    const { direccionViento } = useDireccionViento(datosClima.windDirectionDeg)
 
     useEffect(() => {
         setIcon(datosClima.icon)
-        setWindDeg(direccionVientoAproximada)
+        setWindDeg(direccionViento)
     }, [datosClima.icon])
 
     return (
@@ -53,7 +53,7 @@ export default function InformacionClimaCiudad({ datosCiudad, datosClima }) {
                     <div className='item-InformacionClimCiudad item5-IC'>
                         <h2>{datosClima.description}</h2>
                         <div className='separador' />
-                        <p>{windDeg.abreviatura} - Vientos de <b>{datosClima.windSpeed} km/h</b> con ráfagas de <b>{datosClima.windGust} km/h</b></p>
+                        <p>{windDeg} - Vientos de <b>{datosClima.windSpeed} km/h</b> con ráfagas de <b>{datosClima.windGust} km/h</b></p>
                         <p>Utima Actualizacion:  </p>
                         <div className='contenedor-hora-actualizacion'>
                             <h3>{datosClima.dateHourMinute}</h3>

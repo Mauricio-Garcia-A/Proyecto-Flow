@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import InformacionClimaCiudad from '../Componentes/InformacionClimaCiudad/InformacionClimaCiudad';
 import PlaceholderInformacionClimaCiudad from '../Componentes/InformacionClimaCiudad/PlaceholderInformacionClimaCiudad';
 import PlaceholderPronosticoExtendido from '../Componentes/PronosticoExtendido/PlaceholderPronosticoExtendido';
@@ -14,7 +14,7 @@ import './Home.scss'
 export default function Home(props) {
 
     const { coordenadasActuales, loadingGEO } = useGeolocalizacion()       // Se obtinen las cordenadas de la ubicacion actual
-    
+
     const ciudades=[
         'San Carlos de Bariloche',
         'Villa Carlos Paz',
@@ -65,7 +65,6 @@ export default function Home(props) {
                     {loadingPE                                                                                                          // Si esta cargado muestra Placehoder y cuando termina de cargar muestra el Listado De Productos
                         ? <PlaceholderPronosticoExtendido />
                         : <>
-                            
                             <PronosticoExtendido listaDiasPronosticoExtendido={listDaysExtendedForecast} />
                         </>
                     }

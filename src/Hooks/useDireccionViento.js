@@ -23,29 +23,13 @@ export default function useDireccionViento(numeroGrados=0) {
         { grados: 315, direccion: 'Noroeste', abreviatura: 'NW' },
         { grados: 337.5, direccion: 'Norte-Noroeste', abreviatura: 'NNW' },
 
+        { grados: 360, direccion: 'Norte', abreviatura: 'N' },
     ]
     
-    let menor = 0
-    let mayor = 0
-    let cercano = 0
-    let i
-    for (i = 0; i < direccionesViento.length; i++) {
-        if (Math.trunc(direccionesViento[i].grados) === numeroGrados) {
-            menor = direccionesViento[i];
-        } else if (Math.trunc(direccionesViento[i].grados) < numeroGrados) {
-            menor = direccionesViento[i];
-        } else if (Math.trunc(direccionesViento[i].grados) > numeroGrados) {
-            mayor = direccionesViento[i];
-        }
-    }
-    if ((mayor.grados - numeroGrados) < (numeroGrados - menor.grados )) {
-        cercano = mayor;
-    } else {
-        cercano = menor;
-    }
 
-    const direccionVientoAproximada = cercano
-    
-    return {direccionVientoAproximada}
+    const direccionVientoAproximada = direccionesViento.filter(direccion => ((direccion.grados-11.25)<numeroGrados)&&((direccion.grados+11.25)>=numeroGrados))
+    const direccionViento=direccionVientoAproximada[0].abreviatura
+
+    return {direccionViento}
 
 }
